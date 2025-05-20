@@ -1,0 +1,305 @@
+{
+  "season": 2025,
+  "playerBattingStats": [
+    {
+      "id": 1,
+      "name": "Juan Soto",
+      "team": "New York Yankees",
+      "avg": 0.342,
+      "atBats": 412,
+      "hits": 141,
+      "homeRuns": 29,
+      "rbi": 84
+    },
+    {
+      "id": 2,
+      "name": "Shohei Ohtani",
+      "team": "Los Angeles Dodgers",
+      "avg": 0.328,
+      "atBats": 398,
+      "hits": 130,
+      "homeRuns": 35,
+      "rbi": 91
+    },
+    {
+      "id": 3,
+      "name": "Vladimir Guerrero Jr.",
+      "team": "Toronto Blue Jays",
+      "avg": 0.324,
+      "atBats": 420,
+      "hits": 136,
+      "homeRuns": 28,
+      "rbi": 78
+    },
+    {
+      "id": 4,
+      "name": "Bobby Witt Jr.",
+      "team": "Kansas City Royals",
+      "avg": 0.321,
+      "atBats": 425,
+      "hits": 136,
+      "homeRuns": 21,
+      "rbi": 65
+    },
+    {
+      "id": 5,
+      "name": "Fernando Tatis Jr.",
+      "team": "San Diego Padres",
+      "avg": 0.317,
+      "atBats": 402,
+      "hits": 127,
+      "homeRuns": 24,
+      "rbi": 72
+    },
+    {
+      "id": 6,
+      "name": "Gunnar Henderson",
+      "team": "Baltimore Orioles",
+      "avg": 0.315,
+      "atBats": 415,
+      "hits": 131,
+      "homeRuns": 27,
+      "rbi": 81
+    },
+    {
+      "id": 7,
+      "name": "Mookie Betts",
+      "team": "Los Angeles Dodgers",
+      "avg": 0.314,
+      "atBats": 401,
+      "hits": 126,
+      "homeRuns": 23,
+      "rbi": 76
+    },
+    {
+      "id": 8,
+      "name": "Yordan Alvarez",
+      "team": "Houston Astros",
+      "avg": 0.313,
+      "atBats": 390,
+      "hits": 122,
+      "homeRuns": 31,
+      "rbi": 88
+    },
+    {
+      "id": 9,
+      "name": "Corbin Carroll",
+      "team": "Arizona Diamondbacks",
+      "avg": 0.310,
+      "atBats": 413,
+      "hits": 128,
+      "homeRuns": 19,
+      "rbi": 62
+    },
+    {
+      "id": 10,
+      "name": "Aaron Judge",
+      "team": "New York Yankees",
+      "avg": 0.308,
+      "atBats": 386,
+      "hits": 119,
+      "homeRuns": 38,
+      "rbi": 92
+    },
+    {
+      "id": 11,
+      "name": "Luis Robert Jr.",
+      "team": "Chicago White Sox",
+      "avg": 0.305,
+      "atBats": 395,
+      "hits": 120,
+      "homeRuns": 26,
+      "rbi": 73
+    },
+    {
+      "id": 12,
+      "name": "Freddie Freeman",
+      "team": "Los Angeles Dodgers",
+      "avg": 0.304,
+      "atBats": 408,
+      "hits": 124,
+      "homeRuns": 22,
+      "rbi": 79
+    },
+    {
+      "id": 13,
+      "name": "Riley Greene",
+      "team": "Detroit Tigers",
+      "avg": 0.303,
+      "atBats": 400,
+      "hits": 121,
+      "homeRuns": 20,
+      "rbi": 68
+    },
+    {
+      "id": 14,
+      "name": "Francisco Lindor",
+      "team": "New York Mets",
+      "avg": 0.299,
+      "atBats": 418,
+      "hits": 125,
+      "homeRuns": 25,
+      "rbi": 77
+    },
+    {
+      "id": 15,
+      "name": "Rafael Devers",
+      "team": "Boston Red Sox",
+      "avg": 0.297,
+      "atBats": 412,
+      "hits": 122,
+      "homeRuns": 29,
+      "rbi": 84
+    },
+    {
+      "id": 16,
+      "name": "Corey Seager",
+      "team": "Texas Rangers",
+      "avg": 0.295,
+      "atBats": 410,
+      "hits": 121,
+      "homeRuns": 27,
+      "rbi": 85
+    },
+    {
+      "id": 17,
+      "name": "Kyle Tucker",
+      "team": "Houston Astros",
+      "avg": 0.292,
+      "atBats": 405,
+      "hits": 118,
+      "homeRuns": 26,
+      "rbi": 83
+    },
+    {
+      "id": 18,
+      "name": "Bryce Harper",
+      "team": "Philadelphia Phillies",
+      "avg": 0.290,
+      "atBats": 400,
+      "hits": 116,
+      "homeRuns": 28,
+      "rbi": 87
+    },
+    {
+      "id": 19,
+      "name": "Elly De La Cruz",
+      "team": "Cincinnati Reds",
+      "avg": 0.289,
+      "atBats": 395,
+      "hits": 114,
+      "homeRuns": 22,
+      "rbi": 67
+    },
+    {
+      "id": 20,
+      "name": "Julio Rodriguez",
+      "team": "Seattle Mariners",
+      "avg": 0.287,
+      "atBats": 405,
+      "hits": 116,
+      "homeRuns": 23,
+      "rbi": 71
+    },
+    {
+      "id": 21,
+      "name": "Jackson Holliday",
+      "team": "Baltimore Orioles",
+      "avg": 0.285,
+      "atBats": 390,
+      "hits": 111,
+      "homeRuns": 17,
+      "rbi": 62
+    },
+    {
+      "id": 22,
+      "name": "Jose Ramirez",
+      "team": "Cleveland Guardians",
+      "avg": 0.283,
+      "atBats": 410,
+      "hits": 116,
+      "homeRuns": 27,
+      "rbi": 88
+    },
+    {
+      "id": 23,
+      "name": "Austin Riley",
+      "team": "Atlanta Braves",
+      "avg": 0.280,
+      "atBats": 415,
+      "hits": 116,
+      "homeRuns": 26,
+      "rbi": 83
+    },
+    {
+      "id": 24,
+      "name": "Bo Bichette",
+      "team": "Toronto Blue Jays",
+      "avg": 0.278,
+      "atBats": 420,
+      "hits": 117,
+      "homeRuns": 19,
+      "rbi": 68
+    },
+    {
+      "id": 25,
+      "name": "Ronald Acuña Jr.",
+      "team": "Atlanta Braves",
+      "avg": 0.277,
+      "atBats": 400,
+      "hits": 111,
+      "homeRuns": 23,
+      "rbi": 71
+    },
+    {
+      "id": 26,
+      "name": "Trea Turner",
+      "team": "Philadelphia Phillies",
+      "avg": 0.275,
+      "atBats": 418,
+      "hits": 115,
+      "homeRuns": 22,
+      "rbi": 74
+    },
+    {
+      "id": 27,
+      "name": "Paul Goldschmidt",
+      "team": "St. Louis Cardinals",
+      "avg": 0.272,
+      "atBats": 405,
+      "hits": 110,
+      "homeRuns": 24,
+      "rbi": 79
+    },
+    {
+      "id": 28,
+      "name": "Michael Harris II",
+      "team": "Atlanta Braves",
+      "avg": 0.270,
+      "atBats": 392,
+      "hits": 106,
+      "homeRuns": 18,
+      "rbi": 64
+    },
+    {
+      "id": 29,
+      "name": "Steven Kwan",
+      "team": "Cleveland Guardians",
+      "avg": 0.268,
+      "atBats": 410,
+      "hits": 110,
+      "homeRuns": 8,
+      "rbi": 54
+    },
+    {
+      "id": 30,
+      "name": "Nolan Arenado",
+      "team": "St. Louis Cardinals",
+      "avg": 0.265,
+      "atBats": 408,
+      "hits": 108,
+      "homeRuns": 23,
+      "rbi": 77
+    }
+  ]
+}

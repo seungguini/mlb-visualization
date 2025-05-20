@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLB Batting Average Visualization</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>MLB Batting Average Visualization</h1>
+    </header>
+    
+    <main>
+        <div class="controls">
+            <select id="season-select">
+                <option value="2025" selected>2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+            </select>
+            <button id="fetch-data">Load Data</button>
+        </div>
+        
+        <div id="loading" class="hidden">Loading data...</div>
+        
+        <div id="visualization-container"></div>
+        
+        <div id="stats-info">
+            <h2>About Batting Average</h2>
+            <p>Batting average (AVG) is a statistic that measures a batter's success rate in getting a hit, calculated by dividing total hits by total at-bats. A batting average of .300 or higher is considered excellent in modern baseball.</p>
+        </div>
+    </main>
+    
+    <footer>
+        <p>MLB Visualization Project | Using static 2025 season data</p>
+    </footer>
+
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    
+    <!-- App scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/teamColors.js"></script>
+    <script src="js/visualization.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
