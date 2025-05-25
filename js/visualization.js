@@ -87,6 +87,10 @@ class BattingVisualizer {
             this.chart.destroy();
         }
         
+        // Store the original colors for restoring after hover
+        this.originalBackgroundColors = [...backgroundColors];
+        this.originalBorderColors = [...borderColors];
+        
         // Create the chart
         const ctx = this.canvas.getContext('2d');
         this.chart = new Chart(ctx, {
@@ -116,23 +120,72 @@ class BattingVisualizer {
                         display: false
                     },
                     tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        filter: (tooltipItem) => {
+                            // Get the team of the hovered player
+                            const hoveredIndex = tooltipItem.dataIndex;
+                            const hoveredTeam = visData[hoveredIndex].team;
+                            
+                            // Only show tooltips for players on the same team
+                            return visData[tooltipItem.dataIndex].team === hoveredTeam;
+                        },
                         callbacks: {
                             title: (tooltipItems) => {
+                                if (tooltipItems.length === 0) return '';
                                 const playerIndex = tooltipItems[0].dataIndex;
-                                return visData[playerIndex].name + ' (' + visData[playerIndex].team + ')';
+                                const player = visData[playerIndex];
+                                const teamName = player.team;
+                                
+                                // Return the team name as the title
+                                return `Team: ${teamName}`;
                             },
                             label: (tooltipItem) => {
                                 const playerIndex = tooltipItem.dataIndex;
                                 const player = visData[playerIndex];
+                                return `${player.name}: ${player.avg.toFixed(3)} AVG (${player.hits}/${player.atBats})`;
+                            },
+                            afterLabel: (tooltipItem) => {
+                                const playerIndex = tooltipItem.dataIndex;
+                                const player = visData[playerIndex];
                                 return [
-                                    'Avg: ' + player.avg.toFixed(3),
-                                    'At Bats: ' + player.atBats,
-                                    'Hits: ' + player.hits,
-                                    'Home Runs: ' + player.homeRuns,
-                                    'RBI: ' + player.rbi
+                                    `HR: ${player.homeRuns}`,
+                                    `RBI: ${player.rbi}`
                                 ];
                             }
-                        }
+                        },
+                        backgroundColor: (tooltipItem) => {
+                            if (tooltipItem.tooltip.dataPoints.length > 0) {
+                                const playerIndex = tooltipItem.tooltip.dataPoints[0].dataIndex;
+                                return this.getTeamColor(visData[playerIndex].team);
+                            }
+                            return 'rgba(0, 0, 0, 0.8)';
+                        },
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                        padding: 12,
+                        bodyFont: {
+                            weight: 'bold'
+                        },
+                        titleFont: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        bodySpacing: 6,
+                        cornerRadius: 6
+                    }
+                },
+                onHover: (event, activeElements) => {
+                    // Reset all bars to original colors
+                    this.resetBarColors();
+                    
+                    if (activeElements && activeElements.length > 0) {
+                        // Get the hovered bar's index and the player's team
+                        const index = activeElements[0].index;
+                        const hoveredTeam = visData[index].team;
+                        
+                        // Highlight bars from the same team, fade others
+                        this.highlightTeam(hoveredTeam, visData);
                     }
                 },
                 scales: {
@@ -170,6 +223,79 @@ class BattingVisualizer {
         
         // Add players table below chart
         this.addPlayerTable(visData);
+        
+        // Add event listener for when mouse leaves the chart to reset colors
+        this.canvas.addEventListener('mouseleave', () => {
+            this.resetBarColors();
+        });
+    }
+    
+    /**
+     * Reset all bar colors to their original state
+     */
+    resetBarColors() {
+        if (this.chart && this.originalBackgroundColors) {
+            this.chart.data.datasets[0].backgroundColor = [...this.originalBackgroundColors];
+            this.chart.data.datasets[0].borderColor = [...this.originalBorderColors];
+            this.chart.update();
+        }
+    }
+    
+    /**
+     * Highlight bars for a specific team, fade others
+     * @param {string} teamToHighlight - Team name to highlight
+     * @param {Array} players - Player data
+     */
+    highlightTeam(teamToHighlight, players) {
+        if (!this.chart || !this.originalBackgroundColors) return;
+        
+        // Create new arrays for the updated colors
+        const newBackgroundColors = [...this.originalBackgroundColors];
+        const newBorderColors = [...this.originalBorderColors];
+        
+        // Modify colors based on team
+        players.forEach((player, index) => {
+            if (player.team !== teamToHighlight) {
+                // Fade out other teams
+                newBackgroundColors[index] = this.fadeColor(this.originalBackgroundColors[index]);
+                newBorderColors[index] = this.fadeColor(this.originalBorderColors[index]);
+            } else {
+                // Highlight same team (could add a glow or brightness effect here)
+                newBackgroundColors[index] = this.originalBackgroundColors[index];
+                newBorderColors[index] = this.originalBorderColors[index];
+            }
+        });
+        
+        // Update chart colors
+        this.chart.data.datasets[0].backgroundColor = newBackgroundColors;
+        this.chart.data.datasets[0].borderColor = newBorderColors;
+        this.chart.update();
+    }
+    
+    /**
+     * Convert a color to a faded version
+     * @param {string} color - Original color (hex or rgb)
+     * @returns {string} - Faded color with reduced opacity
+     */
+    fadeColor(color) {
+        // If it's a hex color, convert to rgba
+        if (color.startsWith('#')) {
+            const r = parseInt(color.slice(1, 3), 16);
+            const g = parseInt(color.slice(3, 5), 16);
+            const b = parseInt(color.slice(5, 7), 16);
+            return `rgba(${r}, ${g}, ${b}, 0.2)`;
+        }
+        // If it's already rgb/rgba, modify opacity
+        else if (color.startsWith('rgb')) {
+            if (color.startsWith('rgba')) {
+                // Replace the last opacity value
+                return color.replace(/[\d\.]+\)$/, '0.2)');
+            } else {
+                // Convert rgb to rgba
+                return color.replace(')', ', 0.2)').replace('rgb', 'rgba');
+            }
+        }
+        return color; // Return original if format not recognized
     }
     
     /**
